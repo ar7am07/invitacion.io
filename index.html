@@ -10,6 +10,10 @@
             --primary: #ff4757;
             --secondary: #2f3542;
         }
+        /* Oculta la invitación al inicio */
+#invitacion-contenido {
+    display: none;
+}
 
         body {
             margin: 0;
@@ -101,7 +105,7 @@
     document.body.innerHTML = "<h1>Acceso denegado</h1>";
   }
 </script>
-    <div class="card">
+    <div id="invitacion-contenido" class="card">
         <h1>¡PARTY!</h1>
         <p>Estás invitado a la mejor fiesta del año</p>
         
@@ -115,15 +119,21 @@
     </div>
 
     <script>
-        // Crear confeti animado automáticamente
-        for (let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = Math.random() * 100 + 'vw';
-            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-            document.body.appendChild(confetti);
-        }
-    </script>
+    // 1. Pedir la contraseña al usuario
+    var password = prompt("Introduce la clave secreta para ver la invitación:");
+
+    // 2. Definir la clave correcta
+    var claveCorrecta = "fiesta2026"; 
+
+    // 3. Lógica de validación
+    if (password === claveCorrecta) {
+        // Si es correcta, mostramos el div
+        document.getElementById("invitacion-contenido").style.display = "block";
+    } else {
+        // Si es incorrecta, mostramos un mensaje de error y no mostramos la card
+        alert("Contraseña incorrecta. No puedes ver la invitación.");
+        document.body.innerHTML = "<h1 style='color:white; text-align:center; margin-top:20%'>Acceso Denegado</h1>";
+    }
+</script>
 </body>
 </html>
