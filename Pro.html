@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Invitación Especial!</title>
+    <style>
+        :root {
+            --primary: #ff4757;
+            --secondary: #2f3542;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #2f3542, #000000);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* Efecto de Confeti de Fondo */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary);
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Tarjeta 3D */
+        .card {
+            width: 320px;
+            height: 450px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+        }
+
+        .card h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transform: translateZ(50px); /* Eleva el texto en 3D */
+        }
+
+        .details {
+            transform: translateZ(30px);
+            background: var(--primary);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transform: translateZ(40px);
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 20px var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>¡PARTY!</h1>
+        <p>Estás invitado a la mejor fiesta del año</p>
+        
+        <div class="details">
+            <p><strong>FECHA:</strong> 24 de Octubre</p>
+            <p><strong>HORA:</strong> 21:00 HRS</p>
+            <p><strong>LUGAR:</strong> Mi Casa</p>
+        </div>
+
+        <button class="btn">Confirmar Asistencia</button>
+    </div>
+
+    <script>
+        // Crear confeti animado automáticamente
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            document.body.appendChild(confetti);
+        }
+    </script>
+</body>
+</html>
