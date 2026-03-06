@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Invitación Especial!</title>
@@ -93,7 +94,13 @@
     </style>
 </head>
 <body>
-
+<script>
+  var password = prompt("Introduce la palabra secreta para ver la invitación:");
+  if (password !== "Invitacion2026") { // Cambia "fiesta2024" por la palabra que quieras
+    alert("Contraseña incorrecta.");
+    document.body.innerHTML = "<h1>Acceso denegado</h1>";
+  }
+</script>
     <div class="card">
         <h1>¡PARTY!</h1>
         <p>Estás invitado a la mejor fiesta del año</p>
